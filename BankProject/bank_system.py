@@ -1,6 +1,9 @@
 import csv
 import uuid
 
+class TestNotString(Exception):
+    pass
+
 class Bank:
     def __init__(self):
         pass
