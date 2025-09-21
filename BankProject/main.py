@@ -1,6 +1,7 @@
 
 from bank_system import Bank
 from bank_system import TestNotString
+from customer import Customer 
 
 if __name__ == '__main__':
     while True:
@@ -23,3 +24,7 @@ if __name__ == '__main__':
             bank.add_customer(first_name, last_name, password, checking_balance, savings_balance)
             print('Your account has been created! ')
             break
+
+    # new_cutomer = Customer()
+    # new_password = input('Enter your password')
+    # new_cutomer.login(new_password)

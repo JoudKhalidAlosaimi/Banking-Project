@@ -16,4 +16,3 @@ class Bank:
         with open('bank.csv', 'a', newline='') as f:
             writer = csv.writer(f)
             writer.writerow(data)
-
