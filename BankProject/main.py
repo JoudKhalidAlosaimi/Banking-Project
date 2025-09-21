@@ -21,4 +21,5 @@ if __name__ == '__main__':
             savings_balance = input('Enter your savings balance: ')
             bank = Bank()
             bank.add_customer(first_name, last_name, password, checking_balance, savings_balance)
+            print('Your account has been created! ')
             break
