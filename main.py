@@ -1,7 +1,7 @@
 
-from bank_system import Bank
-from bank_system import TestNotString
-from customer import Customer 
+from BankProject.bank_system import Bank
+from BankProject.bank_system import TestNotString
+from BankProject.customer import Customer 
 
 if __name__ == '__main__':
     start = input('1- New here? 2-Already have an account 3-exit: ')
@@ -29,8 +29,17 @@ if __name__ == '__main__':
     if start == '2':
         while True:
             user_login = Customer()
-            user_fname = input('Enter your first name: ')
-            user_password = input('Enter your password: ')
-            user_login.login(user_fname , user_password)
-            user_account_choices = input('1- Withdraw 2- Deposit 3- Transfer: ')
+            try:
+                user_fname = input('Enter your first name: ')
+                if not user_fname.isalpha():
+                    raise TestNotString
+            except TestNotString:
+                print('Invalid name, please make sure to enter letters')
+            else:
+                user_password = input('Enter your password: ')
+                if user_login.login(user_fname , user_password):
+                    print(f'Welcome {user_fname} , choose what you want to do')
+                    user_account_choices = input('1- Withdraw 2- Deposit 3- Transfer: 4-log out:  ')
+                    break
+
 

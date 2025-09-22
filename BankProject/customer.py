@@ -4,7 +4,7 @@ class Customer:
     def __init__(self):
         pass
 
-    def login(self , first_name, password):
+    def login(self, first_name, password):
         self.found = False
         with open('bank.csv', 'r', newline='') as f:
             reader = csv.DictReader(f)
@@ -17,8 +17,8 @@ class Customer:
                     if first_name == row['frst_name'] and password == row['password']:
                         self.found = True
                         # use return to stop the loop and prints the successful message once
-                        login_successful = print(f'Login successful, Welcome {first_name}')
-                        return login_successful
+                        # login_successful = print(f'Login successful, Welcome {first_name}')
+                        return f'Login successful, Welcome {first_name}'
                         # print(f'Login successful , Welcome {first_name}. ')
 
             if self.found == False:
