@@ -1,4 +1,5 @@
 import csv
+from BankProject.bank_system import TestNotString
 
 class Customer:
     def __init__(self):
@@ -14,6 +15,10 @@ class Customer:
                 #     all_values.append(value)
             # print(all_values)
 
+                    # raise the error here to test it
+                    if not first_name.isalpha():
+                        raise TestNotString
+                    
                     if first_name == row['frst_name'] and password == row['password']:
                         self.found = True
                         # use return to stop the loop and prints the successful message once

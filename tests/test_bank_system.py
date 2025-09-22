@@ -28,5 +28,5 @@ class TestBankSystem(unittest.TestCase):
 
     def test_add_invalid_cutomer(self):
         with self.assertRaises(TestNotString):
-            self.new_bank = Bank()
-            self.new_bank.add_customer('1212' , 'Alosaimi', 1234,10000,1000)
+            # self.new_bank = Bank()
+            self.bank.add_customer('1212' , 'Alosaimi', 1234,10000,1000)
