@@ -23,6 +23,8 @@ class Customer:
                         self.found = True
                         # use return to stop the loop and prints the successful message once
                         # login_successful = print(f'Login successful, Welcome {first_name}')
+
+                        # return a login successful message to test 
                         return f'Login successful, Welcome {first_name}'
                         # print(f'Login successful , Welcome {first_name}. ')
 
