@@ -12,7 +12,7 @@ class Customer:
             # all_values = []
             for row in reader:
                 for value in row.values():
-                #     all_values.append(value)
+                    # all_values.append(value)
             # print(all_values)
 
                     # raise the error here to test it

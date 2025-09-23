@@ -2,6 +2,7 @@
 from BankProject.bank_system import Bank
 from BankProject.bank_system import TestNotString
 from BankProject.customer import Customer 
+from BankProject.account import Account
 
 if __name__ == '__main__':
     start = input('1- New here? 2-Already have an account 3-exit: ')
@@ -40,10 +41,16 @@ if __name__ == '__main__':
                 user_account_id = input('Enter your accounit id: ')
                 if user_login.login(user_fname , user_password, user_account_id):
                     print(f'Welcome {user_fname} , choose what you want to do')
-                    user_account_choices = input('1- Withdraw 2- Deposit 3- Transfer: 4-log out:  ')
-                    if user_account_choices == '4':
+                    user_account_choices = input('1- Deposit 2- Withdraw 3- Transfer: 4-log out:  ')
+                    if user_account_choices == '1':
+                        account = Account()
+                        deposit_account = input('Where do you want to deposit: checkings/savings: ')
+                        deposit_amount = float(input('Enter the amount you want to deposit: '))
+                        account.deposit(deposit_account, deposit_amount , user_account_id)
+                    elif user_account_choices == '4':
                         break
                     # for now
                     break
+
 
 
