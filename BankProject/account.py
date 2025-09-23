@@ -35,4 +35,5 @@ class Account:
             writer.writeheader()
             writer.writerows(rows) #stackoverflow
 
+        print(f'The new balance of {account} is {new_balance}')
         return new_balance
