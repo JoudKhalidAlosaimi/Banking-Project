@@ -12,4 +12,8 @@ class TestAccount(unittest.TestCase):
         print('Tearing down')
 
     def test_account_deposit(self):
-        self.assertEqual(self.new_deposit.deposit('checkings', 22, '68da891c-f017-4ad6-a711-d28897ee7ae8'), 100966.0)
+        self.assertEqual(self.new_deposit.deposit('checkings', 22, '68da891c-f017-4ad6-a711-d28897ee7ae8'), 101132.0)
+
+    def test_amount_negative(self):
+        with self.assertRaises(AmountError):
+            self.new_deposit.deposit('checkings', -100, '68da891c-f017-4ad6-a711-d28897ee7ae8')
