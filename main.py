@@ -3,6 +3,7 @@ from BankProject.bank_system import Bank
 from BankProject.bank_system import TestNotString
 from BankProject.customer import Customer 
 from BankProject.account import Account
+from BankProject.account import AmountError
 
 if __name__ == '__main__':
     start = input('1- New here? 2-Already have an account 3-exit: ')
@@ -45,8 +46,17 @@ if __name__ == '__main__':
                     if user_account_choices == '1':
                         account = Account()
                         deposit_account = input('Where do you want to deposit: checkings/savings: ')
-                        deposit_amount = float(input('Enter the amount you want to deposit: '))
-                        account.deposit(deposit_account, deposit_amount , user_account_id)
+                        while True:
+                                try :
+                                    # account = Account()
+                                    # deposit_account = input('Where do you want to deposit: checkings/savings: ')
+                                    deposit_amount = float(input('Enter the amount you want to deposit: '))
+                                    account.deposit(deposit_account, deposit_amount , user_account_id)
+                                    break
+
+                                except AmountError:
+                                    print('Please enter a positive number')
+                        
                     elif user_account_choices == '4':
                         break
                     # for now
