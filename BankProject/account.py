@@ -5,7 +5,7 @@ class AmountError(Exception):
 
 class Account:
     def __init__(self):
-        pass
+        self.overdraft_count = 0
 
     def deposit(self, account, amount , account_id):
         with open('bank.csv', 'r', newline='') as f:
@@ -37,3 +37,53 @@ class Account:
 
         print(f'The new balance of {account} is {new_balance}')
         return new_balance
+    
+    def withdraw(self,account, amount, account_id):
+        with open('bank.csv', 'r', newline='') as f:
+            reader = csv.DictReader(f)
+            rows = list(reader)
+
+            for row in rows:
+                checkings = float(row['balance_checking'])
+                savings = float(row['balance_savings'])
+
+                if row['account_id'] == account_id:
+                    # if checkings <= -100 or savings <= -100:
+                    #     print('sorry you have reached your limit')
+                    
+                    if amount >= 0 and amount <= 100 and account == 'checkings':
+                        new_balance = checkings - amount
+                        if new_balance < 0:
+                            new_balance -= 35
+                        if new_balance < -100:
+                            self.overdraft_count += 1
+                            print('Withdraw denied, you reached the limit')
+                            print(self.overdraft_count)
+            
+                            if self.overdraft_count == 2:
+                                print('Account deactivaed, pay your overdraft amount and fee to reactivate')
+                        else:
+                            row['balance_checking'] = new_balance
+                            
+                    
+                
+                    elif amount >= 0 and amount <= 100 and account == 'savings':
+                        new_balance = savings - amount
+                        if new_balance < 0:
+                            new_balance -= 34
+                        row['balance_savings'] = new_balance
+
+                    
+        with open('bank.csv','w', newline = '') as f:
+            header_names = ['account_id', 'frst_name','last_name','password','balance_checking','balance_savings']
+            writer = csv.DictWriter(f, fieldnames=header_names)
+            writer.writeheader()
+            writer.writerows(rows) #stackoverflow
+
+        # print(f'The new balance of {account} is {new_balance}')
+        return new_balance
+
+
+
+
+

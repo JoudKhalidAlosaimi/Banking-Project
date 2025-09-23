@@ -56,7 +56,17 @@ if __name__ == '__main__':
 
                                 except AmountError:
                                     print('Please enter a positive number')
-                        
+                    elif user_account_choices == '2':
+                        account = Account()
+                        withdraw_account = input('Where do you want to withdraw from: checkings/savings: ')
+                        while True:
+                                try :
+                                    withdraw_amount = float(input('Enter the amount you want to withdraw: '))
+                                    account.withdraw(withdraw_account, withdraw_amount , user_account_id)
+                                    
+
+                                except AmountError:
+                                    print('Please enter a positive number')
                     elif user_account_choices == '4':
                         break
                     # for now
