@@ -7,6 +7,7 @@ class Account:
     def __init__(self):
         self.overdraft_count = 0
 
+
     def deposit(self, account, amount , account_id):
         with open('bank.csv', 'r', newline='') as f:
             reader = csv.DictReader(f)
@@ -22,7 +23,7 @@ class Account:
                         # row['balance_checking'] = new_balance
                     
                         if new_balance >= 0:
-                            print('your account is now active!')
+                            # print('your account is now active!')
                             row['account_status'] = 'active'
 
                         row['balance_checking'] = new_balance        
@@ -44,6 +45,7 @@ class Account:
         return new_balance
     
     def withdraw(self,account, amount, account_id):
+        new_balance = None
         with open('bank.csv', 'r', newline='') as f:
             reader = csv.DictReader(f)
             rows = list(reader)
@@ -68,18 +70,23 @@ class Account:
                             if self.overdraft_count == 2:
                                 print('Account deactivaed, pay your overdraft amount and fee to reactivate')
                                 row['account_status'] = 'deactivated'
+
                         else:
                             row['balance_checking'] = new_balance
                             print(f'The new balance of {account} is {new_balance}')
+                            # return f' the balance of the {account} is {new_balance}'
+                            
                             
 
                     elif amount >= 0 and amount <= 100 and account == 'savings':
                         new_balance = savings - amount
                         if new_balance < 0:
                             print('sorry withdraw denied , you have reached the limit.')
+
                         else:
                             row['balance_savings'] = new_balance
                             print(f'The new balance of {account} is {new_balance}')
+                            # return f' the balance of the {account} is {new_balance}'
                     
                     
 
@@ -91,7 +98,8 @@ class Account:
             writer.writerows(rows) #stackoverflow
             
 
-            return new_balance
+        
+        return new_balance
     
 
 

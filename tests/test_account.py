@@ -6,17 +6,20 @@ class TestAccount(unittest.TestCase):
 
     def setUp(self):
         print('Setting up')
-        self.new_deposit = Account()
+        self.account = Account()
     
     def tearDown(self):
         print('Tearing down')
 
     def test_account_deposit(self):
-        self.assertEqual(self.new_deposit.deposit('checkings', 22, '68da891c-f017-4ad6-a711-d28897ee7ae8'), 101176.0)
+        self.assertEqual(self.account.deposit('checkings', 100 , '68da891c-f017-4ad6-a711-d28897ee7ae8'), 1727.0)
 
-    def test_amount_error(self):
+    def test_amount_error_deposit(self):
         with self.assertRaises(AmountError):
-            self.new_deposit.deposit('checkings', -100, '68da891c-f017-4ad6-a711-d28897ee7ae8')
+            self.account.deposit('checkings', -100, '68da891c-f017-4ad6-a711-d28897ee7ae8')
     
         with self.assertRaises(TypeError):
-            self.new_deposit.deposit('checkings', 'Hello', '68da891c-f017-4ad6-a711-d28897ee7ae8')
+            self.account.deposit('checkings', 'Hello', '68da891c-f017-4ad6-a711-d28897ee7ae8')
+
+    def test_account_withdraw(self):
+        self.assertEqual(self.account.withdraw('checkings', 1000, '10003'), 1000.0 )
