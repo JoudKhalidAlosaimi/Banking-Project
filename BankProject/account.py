@@ -19,8 +19,13 @@ class Account:
                 if row['account_id'] == account_id:
                     if amount >= 0 and account == 'checkings':
                         new_balance = checkings + amount
-                        row['balance_checking'] = new_balance
+                        # row['balance_checking'] = new_balance
                     
+                        if new_balance >= 0:
+                            print('your account is now active!')
+                            row['account_status'] = 'active'
+
+                        row['balance_checking'] = new_balance        
                 
                     elif amount >= 0 and account == 'savings':
                         new_balance = savings + amount
@@ -30,7 +35,7 @@ class Account:
                         raise AmountError
             
         with open('bank.csv','w', newline = '') as f:
-            header_names = ['account_id', 'frst_name','last_name','password','balance_checking','balance_savings']
+            header_names = ['account_id', 'frst_name','last_name','password','balance_checking','balance_savings','account_status']
             writer = csv.DictWriter(f, fieldnames=header_names)
             writer.writeheader()
             writer.writerows(rows) #stackoverflow
@@ -42,6 +47,7 @@ class Account:
         with open('bank.csv', 'r', newline='') as f:
             reader = csv.DictReader(f)
             rows = list(reader)
+            
 
             for row in rows:
                 checkings = float(row['balance_checking'])
@@ -61,6 +67,7 @@ class Account:
             
                             if self.overdraft_count == 2:
                                 print('Account deactivaed, pay your overdraft amount and fee to reactivate')
+                                row['account_status'] = 'deactivated'
                         else:
                             row['balance_checking'] = new_balance
                             print(f'The new balance of {account} is {new_balance}')
@@ -69,14 +76,7 @@ class Account:
                     elif amount >= 0 and amount <= 100 and account == 'savings':
                         new_balance = savings - amount
                         if new_balance < 0:
-                            new_balance -= 35
-
-                        if new_balance < -100:
-                            self.overdraft_count += 1
-                            print('Withdraw denied, you reached the limit')
-            
-                            if self.overdraft_count == 2:
-                                print('Account deactivaed, pay your overdraft amount and fee to reactivate')
+                            print('sorry withdraw denied , you have reached the limit.')
                         else:
                             row['balance_savings'] = new_balance
                             print(f'The new balance of {account} is {new_balance}')
@@ -85,10 +85,11 @@ class Account:
 
         
         with open('bank.csv','w', newline = '') as f:
-            header_names = ['account_id', 'frst_name','last_name','password','balance_checking','balance_savings']
+            header_names = ['account_id', 'frst_name','last_name','password','balance_checking','balance_savings','account_status']
             writer = csv.DictWriter(f, fieldnames=header_names)
             writer.writeheader()
             writer.writerows(rows) #stackoverflow
+            
 
             return new_balance
     
