@@ -66,8 +66,18 @@ if __name__ == '__main__':
                                     withdraw_amount = float(input('Enter the amount you want to withdraw: '))
                                     account.withdraw(withdraw_account, withdraw_amount , user_account_id)
                                     break
-                                    
 
+                                except AmountError:
+                                    print('the amount must be positive')
+                                    
+                        elif user_account_choices == '3':
+                            transfer_account_from = input('Enter where you want to tranfer from: checkings/savings/another account: ')
+                            transfer_account_to = input('Enter where you want to transfer to: checkings/savings/another account: ')
+                            while True:
+                                try :
+                                    transfer_amount = float(input('Enter the amount you want to transfer: '))
+                                    account.transfer( transfer_account_from, transfer_account_to, transfer_amount,user_account_id,)
+                                    break
                                 except AmountError:
                                     print('Please enter a positive number')
                         elif user_account_choices == '4':

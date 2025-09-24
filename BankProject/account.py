@@ -45,7 +45,7 @@ class Account:
         return new_balance
     
     def withdraw(self,account, amount, account_id):
-        new_balance = None
+        # new_balance = None
         with open('bank.csv', 'r', newline='') as f:
             reader = csv.DictReader(f)
             rows = list(reader)
@@ -56,10 +56,9 @@ class Account:
                 savings = float(row['balance_savings'])
 
                 if row['account_id'] == account_id:
-                    
-                    if amount >= 0 and amount <= 100 and account == 'checkings':
+                    if amount >= 0 and account == 'checkings':
                         new_balance = checkings - amount
-                        if new_balance < 0:
+                        if new_balance < 0 and amount < 100:
                             new_balance -= 35
 
                         if new_balance < -100:
@@ -100,6 +99,36 @@ class Account:
 
         
         return new_balance
+    
+
+    def transfer(self,sender_account,receiver_account,amount,account_id):
+        with open('bank.csv', 'r', newline='') as f:
+            reader = csv.DictReader(f)
+            rows = list(reader)
+            
+
+            for row in rows:
+                checkings = float(row['balance_checking'])
+                savings = float(row['balance_savings'])
+
+                if row['account_id'] == account_id:
+
+                        if amount > 0 and checkings >= amount and sender_account == 'checkings' and receiver_account == 'savings':
+                            
+                            row['balance_checking'] = checkings - amount
+                            row['balance_savings'] = savings + amount
+                            print(f'the new balance of checkings is: {row['balance_checking']}, The new balance of savings is {row['balance_savings']}')
+
+        with open('bank.csv','w', newline = '') as f:
+            header_names = ['account_id', 'frst_name','last_name','password','balance_checking','balance_savings','account_status']
+            writer = csv.DictWriter(f, fieldnames=header_names)
+            writer.writeheader()
+            writer.writerows(rows) #stackoverflow
+
+        return row['balance_checking'] , row['balance_savings']
+
+
+
     
 
 
