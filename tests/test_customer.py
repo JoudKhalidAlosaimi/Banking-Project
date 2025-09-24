@@ -16,9 +16,9 @@ class TestCustomer(unittest.TestCase):
         print('Tearing down')
 
     def test_customer_login_success(self):
-        self.assertEqual(self.customer_login.login('joud' , 'joud2018', '68da891c-f017-4ad6-a711-d28897ee7ae8'), 'Login successful, Welcome joud')
+        self.assertEqual(self.customer_login.login('joud' , 'joud2018', '10007'), 'Login successful, Welcome joud')
 
     def test_customer_raise_error(self):
         with self.assertRaises(TestNotString):
             # self.customer = Customer()
-            self.customer_login.login('1000','joud2018', '68da891c-f017-4ad6-a711-d28897ee7ae8')
+            self.customer_login.login('1000','joud2018', '10007')
