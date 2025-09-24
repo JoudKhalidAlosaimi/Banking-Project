@@ -114,10 +114,17 @@ class Account:
                 if row['account_id'] == account_id:
 
                         if amount > 0 and checkings >= amount and sender_account == 'checkings' and receiver_account == 'savings':
-                            
+
                             row['balance_checking'] = checkings - amount
                             row['balance_savings'] = savings + amount
                             print(f'the new balance of checkings is: {row['balance_checking']}, The new balance of savings is {row['balance_savings']}')
+                        
+                        elif amount > 0 and savings >= amount and sender_account == 'savings' and receiver_account == 'checkings':
+                    
+                            row['balance_savings'] = savings - amount
+                            row['balance_checking'] = checkings + amount
+                            print(f'the new balance of checkings is: {row['balance_checking']}, The new balance of savings is {row['balance_savings']}')
+
 
         with open('bank.csv','w', newline = '') as f:
             header_names = ['account_id', 'frst_name','last_name','password','balance_checking','balance_savings','account_status']
