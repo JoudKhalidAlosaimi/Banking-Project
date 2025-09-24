@@ -91,11 +91,11 @@ class Account:
                     
 
         
-        with open('bank.csv','w', newline = '') as f:
-            header_names = ['account_id', 'frst_name','last_name','password','balance_checking','balance_savings','account_status']
-            writer = csv.DictWriter(f, fieldnames=header_names)
-            writer.writeheader()
-            writer.writerows(rows) #stackoverflow
+            with open('bank.csv','w', newline = '') as f:
+                header_names = ['account_id', 'frst_name','last_name','password','balance_checking','balance_savings','account_status']
+                writer = csv.DictWriter(f, fieldnames=header_names)
+                writer.writeheader()
+                writer.writerows(rows) #stackoverflow
             
 
         
