@@ -127,15 +127,28 @@ class Account:
 
 
                         elif amount > 0 and savings >= amount and sender_account == 'savings' and receiver_account == 'another account':
-                            row['balance_savings'] = savings - amount
+                            row['balance_savings'] = savings - amount # sender 
+
+                            # loop to find the receiver
                             for receiver in rows:
                                 if receiver['account_id'] == receiver_id:
                                     receiver_checkings = float(receiver['balance_checking'])
                                     receiver['balance_checking'] = receiver_checkings + amount
-                                    print(f'the new balance of checkings receiver: {receiver['balance_checking']}')
-                                    print(f'the new balance of savings sender: {row["balance_savings"]}')
+                                    # print(f'the new balance of checkings receiver: {receiver['balance_checking']}')
+                                    print(f'the new balance of your savings: {row["balance_savings"]}')
                                     break
                                 # print(f'the new balance of savings sender: {row['balance_savings']}')
+                        
+                        elif amount > 0 and checkings >= amount and sender_account == 'checkings' and receiver_account == 'another account':
+                            row['balance_checking'] = checkings - amount # sender 
+
+                            # loop to find the receiver
+                            for receiver in rows:
+                                if receiver['account_id'] == receiver_id:
+                                    receiver_checkings = float(receiver['balance_checking'])
+                                    receiver['balance_checking'] = receiver_checkings + amount
+                                    print(f'the new balance of your checkings: {row["balance_checking"]}')
+                                    break
 
         with open('bank.csv','w', newline = '') as f:
             header_names = ['account_id', 'frst_name','last_name','password','balance_checking','balance_savings','account_status']
