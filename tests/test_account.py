@@ -12,7 +12,7 @@ class TestAccount(unittest.TestCase):
         print('Tearing down')
 
     def test_account_deposit(self):
-        self.assertEqual(self.account.deposit('checkings', 100 , '10007'), 1927.0)
+        self.assertEqual(self.account.deposit('checkings', 100 , '10003'), 4500.0)
 
     def test_amount_error_deposit(self):
         with self.assertRaises(AmountError):
@@ -22,4 +22,9 @@ class TestAccount(unittest.TestCase):
             self.account.deposit('checkings', 'Hello', '10007')
 
     def test_account_withdraw(self):
-        self.assertEqual(self.account.withdraw('checkings', 100, '10003'), 1700.0 )
+        self.assertEqual(self.account.withdraw('checkings', 100, '10003'), 4400.0 )
+
+    def test_account_transfer(self):
+        self.assertEqual(self.account.transfer( 'checkings', 'savings', 100,'10006','10006'), (('55.0', '960.0'), ('55.0', '960.0')))
+
+        self.assertEqual(self.account.transfer( 'checkings', 'another account', 50,'10001','10004'), (('5.0', '10000'), ('2450.0', '20000')))

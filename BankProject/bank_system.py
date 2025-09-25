@@ -11,7 +11,6 @@ class Bank:
         pass
 
 
-    
     def generate_customer_id(self):
         self.customers = []
         with open('bank.csv', 'r', newline='') as f:

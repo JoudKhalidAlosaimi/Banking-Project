@@ -93,7 +93,6 @@ class Account:
                 writer = csv.DictWriter(f, fieldnames=header_names)
                 writer.writeheader()
                 writer.writerows(rows) #stackoverflow
-            
 
         
         return new_balance
@@ -116,9 +115,9 @@ class Account:
                             row['balance_checking'] = checkings - amount
                             row['balance_savings'] = savings + amount
                             print(f'the new balance of checkings is: {row['balance_checking']}, The new balance of savings is {row['balance_savings']}')
-                        
+
                         elif amount > 0 and savings >= amount and sender_account == 'savings' and receiver_account == 'checkings' and receiver_id == account_id:
-                    
+
                             row['balance_savings'] = savings - amount
                             row['balance_checking'] = checkings + amount
                             print(f'the new balance of checkings is: {row['balance_checking']}, The new balance of savings is {row['balance_savings']}')
@@ -146,6 +145,7 @@ class Account:
                                     receiver_checkings = float(receiver['balance_checking'])
                                     receiver['balance_checking'] = receiver_checkings + amount
                                     print(f'the new balance of your checkings: {row["balance_checking"]}')
+                                    
                                     break
 
         with open('bank.csv','w', newline = '') as f:
@@ -154,14 +154,38 @@ class Account:
             writer.writeheader()
             writer.writerows(rows) #stackoverflow
 
-        return row['balance_checking'] , row['balance_savings']
+        
+        # the bonus
+        transaction_data = [sender_account,receiver_account,amount,account_id,receiver_id,row['balance_checking'], row['balance_savings']]
+        with open('transaction.csv' , 'a' , newline = '') as f:
+            writer = csv.writer(f)
+            writer.writerow(transaction_data)
 
 
 
-    
+            for row in rows:
+                if row['account_id'] == account_id:
+                    sender_balance =  (row['balance_checking'] , row['balance_savings'])
+
+                if row['account_id'] == receiver_id:
+                    receiver_balance = (row['balance_checking'], row['balance_savings'])
+
+            return sender_balance , receiver_balance
+        
+
+    def transaction_details(self,sender_id):
+
+        with open('transaction.csv' , 'r' , newline = '') as f:
+            reader = csv.DictReader(f)
+            rows = list(reader)
+
+            for row in rows:
+                if row['account_id'] == sender_id:
+
+                    print(f'you sent from {row['sender_account']} account, to {row['receiver_account']}, your new balance for checkings is: {row['sender_new_checking_balance']} your new balance for savings is: {row['sender_new_savings_balance']}')
 
 
-
+            
 
 
 

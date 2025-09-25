@@ -1,0 +1,5 @@
+sender_account,receiver_account,amount,account_id,receiver_id,sender_new_checking_balance,sender_new_savings_balance
+checkings,another account,1000.0,10008,10006,9999000.0,10000
+checkings,savings,5.0,10006,10006,9999000.0,10000
+checkings,another account,1000.0,10008,10001,9998000.0,10000
+checkings,another account,1000.0,10008,10001,9997000.0,10000
