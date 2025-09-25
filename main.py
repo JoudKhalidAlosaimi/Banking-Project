@@ -6,7 +6,7 @@ from BankProject.account import Account
 from BankProject.account import AmountError
 
 if __name__ == '__main__':
-    start = input('1- New here? 2-Already have an account 3-exit: ')
+    start = input('1- New here?  2-Already have an account  3-exit: ')
     if start == '1':
         while True:
             try:

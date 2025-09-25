@@ -9,6 +9,7 @@ class TestBankSystem(unittest.TestCase):
         print('Setting up')
         self.bank = Bank()
         self.bank.add_customer('joud', 'Alosaimi', '1234', 10000, 100 )
+
     def tearDown(self):
         print('Terring down')
 
@@ -22,6 +23,7 @@ class TestBankSystem(unittest.TestCase):
                     all_values.append(value)
             self.assertIn('joud', all_values)
             self.assertIn('100', all_values)
+
             # for row in reader:
             #     print(row['frst_name'])
             #     self.assertIn('joud' , row['frst_name'])
@@ -30,3 +32,10 @@ class TestBankSystem(unittest.TestCase):
         with self.assertRaises(TestNotString):
             # self.new_bank = Bank()
             self.bank.add_customer('1212' , 'Alosaimi', 1234,10000,1000)
+
+    def test_add_invalid_balance(self):
+        with self.assertRaises(ValueError):
+            self.bank.add_customer('Jay', 'James', 'jay1010@!!', 100, 'hello')
+
+        with self.assertRaises(TypeError):
+            self.bank.add_customer('Reem','Ahmed','10Re@!', -100, -200)

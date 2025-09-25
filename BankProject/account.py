@@ -1,7 +1,5 @@
 import csv
-
-class AmountError(Exception):
-    pass
+from BankProject.bank_system import AmountError
 
 class Account:
     def __init__(self):
