@@ -3,6 +3,8 @@ from BankProject.bank_system import TestNotString
 from BankProject.customer import Customer 
 from BankProject.account import Account
 from BankProject.bank_system import AmountError
+from BankProject.bank_system import PasswordError
+import re #GeeksforGeeks
 
 
 if __name__ == '__main__':
@@ -30,6 +32,11 @@ if __name__ == '__main__':
                             raise ValueError
                         elif savings_balance < 0:
                             raise TypeError
+                        
+                        password = input('Enter your password: ')
+                        #GeeksforGeeks
+                        if len(password) < 8 or not re.search('[a-z]' ,password) or not re.search('[A-Z]' ,password) or not re.search('[0-9]' , password):
+                            raise PasswordError
             
                     except TestNotString:
                         print('You have to enter a valid string name')
@@ -39,9 +46,12 @@ if __name__ == '__main__':
 
                     except TypeError:
                         print('Please enter a positive number')
+                    
+                    except PasswordError:
+                        print('Password is too weak , make sure you add 8 characters including Capital letters , small letters, and numbers')
                 
                     else:
-                        password = input('Enter your password: ')
+                        # password = input('Enter your password: ')
                         bank = Bank()
                         bank.add_customer(first_name, last_name, password, checking_balance, savings_balance)
                         print('Your account has been created! ')

@@ -1,9 +1,13 @@
 import csv
+import re #GeeksforGeeks , provides support for regular expressions 
 
 class TestNotString(Exception):
     pass
 
 class AmountError(Exception):
+    pass
+
+class PasswordError(Exception):
     pass
 
 class Bank:
@@ -38,6 +42,12 @@ class Bank:
         
         if checking_balance < 0 or savings_balance < 0:
             raise TypeError
+        
+        
+        if len(password) < 8 or not re.search('[a-z]' ,password) or not re.search('[A-Z]' ,password) or not re.search('[0-9]' , password):
+                # print('Password is too weak , make sure you add 8 characters including Capital letters , small letters, and numbers')
+                raise PasswordError
+                
         
 
         data = [account_id, first_name , last_name , password, checking_balance , savings_balance, account_status]
