@@ -237,7 +237,7 @@ class Account:
 
         sorted_winners = sorted(winner_dict.items(), key= lambda item: item[1], reverse=True) #stackOverflow
 
-        top_three_winners = sorted_winners[:3]
+        top_three_winners = sorted_winners[:3] #stackOverflow
 
         winner = random.choice(top_three_winners)
         winner_id = winner[0]
@@ -254,7 +254,7 @@ class Account:
 
 
         print('the 3 top qualifiers were:')
-        for account_id , balance in top_three_winners:
+        for account_id , balance in top_three_winners: #stackOverflow
             print(f'Account : {account_id} , Balance: {balance}')
 
         print(f'the winner is {final_winner}')
