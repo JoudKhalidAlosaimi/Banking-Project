@@ -31,6 +31,7 @@ class Bank:
     def add_customer(self, first_name , last_name , password, checking_balance , savings_balance):
         # user_id = uuid.uuid4() #GeeksforGeeks
         account_status = 'active'
+        overdraft_count = 0
         account_id = self.generate_customer_id()
         # raise the error here to test it in unit test
         if not first_name.isalpha() or not last_name.isalpha():
@@ -50,7 +51,7 @@ class Bank:
                 
         
 
-        data = [account_id, first_name , last_name , password, checking_balance , savings_balance, account_status]
+        data = [account_id, first_name , last_name , password, checking_balance , savings_balance, overdraft_count, account_status]
         with open('bank.csv', 'a', newline='') as f:
             writer = csv.writer(f)
             writer.writerow(data)

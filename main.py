@@ -8,7 +8,7 @@ import re #GeeksforGeeks
 
 
 if __name__ == '__main__':
-        start = input('1- New here?  2-Already have an account  3-exit: ')
+        start = input('1- New here?  2-Already have an account 3-Todays winner 4-exit: ')
         if start == '1':
             while True:
                     try:
@@ -73,7 +73,7 @@ if __name__ == '__main__':
                         print(f'Welcome {user_fname} , choose what you want to do')
                         account = Account()
                         while True:
-                            user_account_choices = input('1- Deposit 2- Withdraw 3- Transfer: 4-Transaction details 5-log out:  ')
+                            user_account_choices = input('1- Deposit 2- Withdraw 3- Transfer: 4-Transaction details 5-Statement Report 6-log out:  ')
                             if user_account_choices == '1':
                                 # account = Account()
                                 deposit_account = input('Where do you want to deposit: checkings/savings: ')
@@ -114,6 +114,18 @@ if __name__ == '__main__':
                             elif user_account_choices == '4':
                                 account.transaction_details(user_account_id)
                             elif user_account_choices == '5':
+                                account.statement(user_account_id)
+
+                            elif user_account_choices == '6':
                                 break
-                        # for now
-                        break
+        if start == '3':
+            winner = Account()
+            winner.winner()
+            
+        if start == '4':
+            while True:
+                break
+            
+                        
+                        
+                        
