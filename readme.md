@@ -4,5 +4,5 @@ This project is a simple bank system that includes adding customers,logging into
 
 ## Code I am proud of
 
-![My Pictures](Images/code.png)
-![My Pictures](Images/codeTwo.png)
+![My Code Picture](Images/code.png)
+<!-- ![My Pictures](Images/codeTwo.png) -->
