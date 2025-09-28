@@ -6,3 +6,4 @@ date,sender_account,receiver_account,amount,account_id,receiver_id,sender_new_ch
 2025-09-28 01:12:18.085641,savings,another account,60.0,10006,10003,200.0,665.0
 2025-09-28 05:38:32.251633,checkings,savings,10.0,10010,10010,11010.0,910.0
 2025-09-28 05:41:13.826072,checkings,savings,100.0,10010,10010,10910.0,1010.0
+2025-09-28 06:41:20.050496,savings,another account,100.0,10012,10009,9900.0,100.0

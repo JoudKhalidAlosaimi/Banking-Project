@@ -117,16 +117,15 @@ if __name__ == '__main__':
                                 account.statement(user_account_id)
 
                             elif user_account_choices == '6':
-                                break
-                            break
-                        break
+                                print('Logging out')
+                                exit()
         if start == '3':
             winner = Account()
             winner.winner()
 
         if start =='4':
-            while True:
-                break
+            print('Exiting the program, hope to see you again')
+            exit()
 
             
                         
