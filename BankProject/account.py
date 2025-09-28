@@ -171,12 +171,12 @@ class Account:
             writer.writerows(rows) #stackoverflow
 
         
-        # the bonus
-        date = dt.datetime.now()
-        transaction_data = [date,sender_account,receiver_account,amount,account_id,receiver_id,new_checkings, new_savings]
-        with open('transaction.csv' , 'a' , newline = '') as f:
-            writer = csv.writer(f)
-            writer.writerow(transaction_data)
+            # the bonus
+            date = dt.datetime.now()
+            transaction_data = [date,sender_account,receiver_account,amount,account_id,receiver_id,new_checkings, new_savings]
+            with open('transaction.csv' , 'a' , newline = '') as f:
+                writer = csv.writer(f)
+                writer.writerow(transaction_data)
 
 
 

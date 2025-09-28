@@ -118,13 +118,16 @@ if __name__ == '__main__':
 
                             elif user_account_choices == '6':
                                 break
+                            break
+                        break
         if start == '3':
             winner = Account()
             winner.winner()
-            
-        if start == '4':
+
+        if start =='4':
             while True:
                 break
+
             
                         
                         
