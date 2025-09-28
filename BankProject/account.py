@@ -199,7 +199,8 @@ class Account:
             for row in rows:
                 if row['account_id'] == sender_id:
 
-                    print(f' On {row['date']} , you sent from {row['sender_account']} to {row['receiver_account']}. your new balance for checkings is: {row['sender_new_checking_balance']} your new balance for savings is: {row['sender_new_savings_balance']}')
+                    print(f''' On {row['date']} , you sent from {row['sender_account']} to {row['receiver_account']}. 
+                        new balance for checkings is: {row['sender_new_checking_balance']} your new balance for savings is: {row['sender_new_savings_balance']}''')
 
 
     def statement(self,account_id):
@@ -220,7 +221,8 @@ class Account:
                         writer = csv.writer(f)
                         writer.writerow(new_txt_data)
 
-                        print(f'Your checkings current balance is: {row["balance_checking"]}\nYour savings current balance is: {row["balance_savings"]}\nYour overdraft count is: {row["overdraft_count"]}\nYour account status is: {row["account_status"]}')
+                        print(f'''Your checkings current balance is: {row["balance_checking"]}\nYour savings current balance is: {row["balance_savings"]}
+                            \nYour overdraft count is: {row["overdraft_count"]}\nYour account status is: {row["account_status"]}''')
 
 
     def winner(self):
@@ -249,7 +251,6 @@ class Account:
                 final_winner = row['account_id']
                 final_winner_after_balance = row['balance_checking']
                 break
-                    
                 
 
 
